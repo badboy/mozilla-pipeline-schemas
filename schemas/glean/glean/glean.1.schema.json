@@ -328,7 +328,9 @@
         },
         "object": {
           "additionalProperties": {
-            "items": {},
+            "items": {
+              "type": "any"
+            },
             "type": [
               "object",
               "array"
