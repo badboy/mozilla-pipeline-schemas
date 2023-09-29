@@ -329,7 +329,7 @@
         "object": {
           "additionalProperties": {
             "items": {
-              "type": "any"
+              "format": "json"
             },
             "type": [
               "object",
