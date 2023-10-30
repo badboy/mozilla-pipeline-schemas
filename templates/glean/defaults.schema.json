@@ -1,3 +1,7 @@
 {
-  "mozPipelineMetadata": false
+  "mozPipelineMetadata": {
+    "bq_dataset_family": "",
+    "bq_table": "",
+    "json_object_path": "object\\..*"
+  }
 }
