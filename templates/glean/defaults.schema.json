@@ -1,7 +1,5 @@
 {
   "mozPipelineMetadata": {
-    "bq_dataset_family": "",
-    "bq_table": "",
     "json_object_path_regex": "metrics\\.object\\..*"
   }
 }
