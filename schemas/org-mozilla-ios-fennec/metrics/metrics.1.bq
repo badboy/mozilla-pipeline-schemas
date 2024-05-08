@@ -86,6 +86,18 @@
         "type": "STRING"
       },
       {
+        "description": "An optional running counter of the number of sessions for a client.",
+        "mode": "NULLABLE",
+        "name": "session_count",
+        "type": "INT64"
+      },
+      {
+        "description": "An optional UUID uniquely identifying the client's current session.",
+        "mode": "NULLABLE",
+        "name": "session_id",
+        "type": "STRING"
+      },
+      {
         "description": "The version of the Glean SDK",
         "mode": "NULLABLE",
         "name": "telemetry_sdk_build",
@@ -2182,6 +2194,12 @@
       {
         "fields": [
           {
+            "description": "A counter of the number of all addresses that are currently saved by the user.\n",
+            "mode": "NULLABLE",
+            "name": "addresses_saved_all",
+            "type": "INT64"
+          },
+          {
             "description": "A quantity that indicates how many bookmarks a user\nhas in the mobile folder.\n",
             "mode": "NULLABLE",
             "name": "bookmarks_mobile_bookmarks_count",
@@ -2233,6 +2251,12 @@
             "description": "A snapshot of how many private tabs a user has opened when he\ncloses the application.\n",
             "mode": "NULLABLE",
             "name": "tabs_private_tabs_quantity",
+            "type": "INT64"
+          },
+          {
+            "description": "A snapshot of how many windows the user has opened on iPad.\n",
+            "mode": "NULLABLE",
+            "name": "windows_ipad_window_count",
             "type": "INT64"
           }
         ],

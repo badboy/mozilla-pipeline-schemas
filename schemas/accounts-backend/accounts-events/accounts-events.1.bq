@@ -86,6 +86,18 @@
         "type": "STRING"
       },
       {
+        "description": "An optional running counter of the number of sessions for a client.",
+        "mode": "NULLABLE",
+        "name": "session_count",
+        "type": "INT64"
+      },
+      {
+        "description": "An optional UUID uniquely identifying the client's current session.",
+        "mode": "NULLABLE",
+        "name": "session_id",
+        "type": "STRING"
+      },
+      {
         "description": "The version of the Glean SDK",
         "mode": "NULLABLE",
         "name": "telemetry_sdk_build",
@@ -452,7 +464,7 @@
             "type": "STRING"
           },
           {
-            "description": "The source from where the user started.  For example, if the user clicked on a\nlink on the Firefox accounts web site, this value could be 'fx-website'.  The\nvalue has a max length of 128 characters with the alphanumeric characters, _\n(underscore), forward slash (/), . (period), % (percentage sign), and -\n(hyphen) in the allowed set of characters.\n",
+            "description": "The source from where the user started.  For example, if the user clicked on a\nlink on the Mozilla accounts web site, this value could be 'fx-website'.  The\nvalue has a max length of 128 characters with the alphanumeric characters, _\n(underscore), forward slash (/), . (period), % (percentage sign), and -\n(hyphen) in the allowed set of characters.\n",
             "mode": "NULLABLE",
             "name": "utm_source",
             "type": "STRING"

@@ -86,6 +86,18 @@
         "type": "STRING"
       },
       {
+        "description": "An optional running counter of the number of sessions for a client.",
+        "mode": "NULLABLE",
+        "name": "session_count",
+        "type": "INT64"
+      },
+      {
+        "description": "An optional UUID uniquely identifying the client's current session.",
+        "mode": "NULLABLE",
+        "name": "session_id",
+        "type": "STRING"
+      },
+      {
         "description": "The version of the Glean SDK",
         "mode": "NULLABLE",
         "name": "telemetry_sdk_build",
@@ -606,6 +618,12 @@
             "description": "The compiler type in use (CC_TYPE), such as \"clang\" or \"gcc\".",
             "mode": "NULLABLE",
             "name": "mozbuild_compiler",
+            "type": "STRING"
+          },
+          {
+            "description": "The project being built.",
+            "mode": "NULLABLE",
+            "name": "mozbuild_project",
             "type": "STRING"
           }
         ],

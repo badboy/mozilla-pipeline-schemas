@@ -10,6 +10,7 @@
         "expiration_policy":{
             "delete_after_days":30
         },
+        "include_info_sections":true,
         "override_attributes":[
             {
                 "name":"geo_city",
@@ -81,6 +82,14 @@
                 },
                 "os_version":{
                     "description":"The user-visible version of the operating system (e.g. \"1.2.3\"). If the version detection fails, this metric gets set to `Unknown`.",
+                    "type":"string"
+                },
+                "session_count":{
+                    "description":"An optional running counter of the number of sessions for a client.",
+                    "type":"integer"
+                },
+                "session_id":{
+                    "description":"An optional UUID uniquely identifying the client's current session.",
                     "type":"string"
                 },
                 "telemetry_sdk_build":{

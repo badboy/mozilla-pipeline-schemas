@@ -11,10 +11,15 @@ to [gcp-ingestion](https://github.com/mozilla/gcp-ingestion) and BigQuery.
 schemas
 ├── accounts-backend
 │   ├── accounts-events
+│   └── events
+├── accounts-cirrus
 │   ├── baseline
 │   ├── deletion-request
+│   ├── enrollment
+│   ├── enrollment-status
 │   ├── events
-│   └── metrics
+│   ├── metrics
+│   └── startup
 ├── accounts-frontend
 │   ├── accounts-events
 │   ├── deletion-request
@@ -76,12 +81,16 @@ schemas
 │   ├── newtab
 │   ├── pageload
 │   ├── pocket-button
+│   ├── prototype-no-code-events
 │   ├── pseudo-main
 │   ├── quick-suggest
 │   ├── search-with
+│   ├── serp-categorization
 │   ├── spoc
 │   ├── top-sites
-│   └── use-counters
+│   ├── urlbar-potential-exposure
+│   ├── use-counters
+│   └── user-characteristics
 ├── firefox-desktop-background-defaultagent
 │   ├── baseline
 │   ├── default-agent
@@ -169,10 +178,7 @@ schemas
 │   ├── deletion-request
 │   └── events
 ├── moso-mastodon-backend
-│   ├── baseline
-│   ├── deletion-request
-│   ├── events
-│   └── metrics
+│   └── events
 ├── moso-mastodon-web
 │   ├── deletion-request
 │   └── events
@@ -531,6 +537,15 @@ schemas
 │   ├── metrics
 │   ├── screen-recording
 │   └── tiktok-report
+├── org-mozilla-ios-tiktok-reporter-tiktok-reportershare
+│   ├── baseline
+│   ├── deletion-request
+│   ├── download-data
+│   ├── email
+│   ├── events
+│   ├── metrics
+│   ├── screen-recording
+│   └── tiktok-report
 ├── org-mozilla-klar
 │   ├── activation
 │   ├── baseline
@@ -552,6 +567,11 @@ schemas
 ├── org-mozilla-reference-browser
 │   ├── baseline
 │   ├── crash
+│   ├── deletion-request
+│   ├── events
+│   └── metrics
+├── org-mozilla-social-nightly
+│   ├── baseline
 │   ├── deletion-request
 │   ├── events
 │   └── metrics
@@ -779,6 +799,6 @@ schemas
 └── webpagetest
     └── webpagetest-run
 
-769 directories
+789 directories
 ```
 

@@ -86,6 +86,18 @@
         "type": "STRING"
       },
       {
+        "description": "An optional running counter of the number of sessions for a client.",
+        "mode": "NULLABLE",
+        "name": "session_count",
+        "type": "INT64"
+      },
+      {
+        "description": "An optional UUID uniquely identifying the client's current session.",
+        "mode": "NULLABLE",
+        "name": "session_id",
+        "type": "STRING"
+      },
+      {
         "description": "The version of the Glean SDK",
         "mode": "NULLABLE",
         "name": "telemetry_sdk_build",
@@ -301,6 +313,24 @@
       {
         "fields": [
           {
+            "description": "Count of times that the connection health check results\nin no signal.\n\nThe health check counters must not be considered as markers of time.\nThere is a possible situation in the health check (which calls the\ntelemetry) which frequently results in more than one count per second.\nThe situation: A health check is conducted because a network check did not\nreturn, and milliseconds later that network check returns and another\nhealth check is started because of the return.\n",
+            "mode": "NULLABLE",
+            "name": "connection_health_no_signal_count",
+            "type": "INT64"
+          },
+          {
+            "description": "Count of times that the connection health check succeeds.\n\nThe health check counters must not be considered as markers of time.\nThere is a possible situation in the health check (which calls the\ntelemetry) which frequently results in more than one count per second.\nThe situation: A health check is conducted because a network check did not\nreturn, and milliseconds later that network check returns and another\nhealth check is started because of the return.\n",
+            "mode": "NULLABLE",
+            "name": "connection_health_stable_count",
+            "type": "INT64"
+          },
+          {
+            "description": "Count of times that the connection health check results\nin unstable.\n\nThe health check counters must not be considered as markers of time.\nThere is a possible situation in the health check (which calls the\ntelemetry) which frequently results in more than one count per second.\nThe situation: A health check is conducted because a network check did not\nreturn, and milliseconds later that network check returns and another\nhealth check is started because of the return.\n",
+            "mode": "NULLABLE",
+            "name": "connection_health_unstable_count",
+            "type": "INT64"
+          },
+          {
             "description": "Count of times that the connection health check succeeds.\nCollected only on mobile apps.\n",
             "mode": "NULLABLE",
             "name": "session_connection_health_stable_count",
@@ -314,13 +344,13 @@
       {
         "fields": [
           {
-            "description": "(Mobile-only) The time the user ends a VPN session from the daemon or network extension\n",
+            "description": "(Mobile-only) The time the user ends a VPN session from the daemon or\nnetwork extension\n",
             "mode": "NULLABLE",
             "name": "session_daemon_session_end",
             "type": "STRING"
           },
           {
-            "description": "(Mobile-only) The time the user starts a VPN session from the daemon or network extension\n",
+            "description": "(Mobile-only) The time the user starts a VPN session from the daemon or\nnetwork extension\n",
             "mode": "NULLABLE",
             "name": "session_daemon_session_start",
             "type": "STRING"
@@ -418,7 +448,7 @@
             "type": "STRING"
           },
           {
-            "description": "(Mobile-only) Where the VPN session started from, to determine how many sessions\nstart outside the app. Values should be \"app\" or \"system\". \"system\" covers\ncases like system settings, autostart on boot, tile, etc.\n",
+            "description": "(Mobile-only) Where the VPN session started from, to determine how many\nsessions start outside the app. Values should be \"app\" or \"system\".\n\"system\" covers cases like system settings, autostart on boot, tile, etc.\n",
             "mode": "NULLABLE",
             "name": "session_daemon_session_source",
             "type": "STRING"
@@ -431,7 +461,212 @@
       {
         "fields": [
           {
-            "description": "(Mobile-only) A unique identifier for each session. This is used to connect\nunique VPN sessions across pings, and as a safety check on edge cases of VPN\nactivation/deactivation, such as a session being started/ended from mobile\nsystem settings.\n",
+            "description": "Time spent in no signal state.\n\nOnly collected on desktop for vpnsession, as mobile apps\nfrequently are relaunched during VPN sessions. It is\ncollected in daemonsession for mobile clients.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "connection_health_no_signal_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time spent in stable state.\n\nOnly collected on desktop for vpnsession, as mobile apps\nfrequently are relaunched during VPN sessions. It is\ncollected in daemonsession for mobile clients.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "connection_health_stable_time",
+            "type": "RECORD"
+          },
+          {
+            "description": "Time spent in unstable state.\n\nOnly collected on desktop for vpnsession, as mobile apps\nfrequently are relaunched during VPN sessions. It is\ncollected in daemonsession for mobile clients.\n",
+            "fields": [
+              {
+                "mode": "NULLABLE",
+                "name": "bucket_count",
+                "type": "INT64"
+              },
+              {
+                "description": "This was accidentally sent in the past and is now deprecated. See https://bugzilla.mozilla.org/show_bug.cgi?id=1799509#c5",
+                "mode": "NULLABLE",
+                "name": "count",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "histogram_type",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "overflow",
+                "type": "INT64"
+              },
+              {
+                "mode": "REPEATED",
+                "name": "range",
+                "type": "FLOAT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "sum",
+                "type": "INT64"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "time_unit",
+                "type": "STRING"
+              },
+              {
+                "mode": "NULLABLE",
+                "name": "underflow",
+                "type": "INT64"
+              },
+              {
+                "fields": [
+                  {
+                    "mode": "NULLABLE",
+                    "name": "key",
+                    "type": "STRING"
+                  },
+                  {
+                    "mode": "NULLABLE",
+                    "name": "value",
+                    "type": "INT64"
+                  }
+                ],
+                "mode": "REPEATED",
+                "name": "values",
+                "type": "RECORD"
+              }
+            ],
+            "mode": "NULLABLE",
+            "name": "connection_health_unstable_time",
+            "type": "RECORD"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "timing_distribution",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "description": "(Mobile-only) A unique identifier for each session.\nThis is used to connect unique VPN sessions across pings, and as a safety\ncheck on edge cases of VPN activation/deactivation, such as a session\nbeing started/ended from mobile system settings.\n",
             "mode": "NULLABLE",
             "name": "session_daemon_session_id",
             "type": "STRING"

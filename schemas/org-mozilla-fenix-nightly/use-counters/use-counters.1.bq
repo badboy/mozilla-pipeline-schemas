@@ -86,6 +86,18 @@
         "type": "STRING"
       },
       {
+        "description": "An optional running counter of the number of sessions for a client.",
+        "mode": "NULLABLE",
+        "name": "session_count",
+        "type": "INT64"
+      },
+      {
+        "description": "An optional UUID uniquely identifying the client's current session.",
+        "mode": "NULLABLE",
+        "name": "session_id",
+        "type": "STRING"
+      },
+      {
         "description": "The version of the Glean SDK",
         "mode": "NULLABLE",
         "name": "telemetry_sdk_build",
@@ -3298,6 +3310,12 @@
             "description": "Whether a document used the CSS property transition. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_css_doc_css_transition",
+            "type": "INT64"
+          },
+          {
+            "description": "Whether a document used the CSS property transition-behavior. Compare against `use.counter.content_documents_destroyed` to calculate the rate.\n",
+            "mode": "NULLABLE",
+            "name": "use_counter_css_doc_css_transition_behavior",
             "type": "INT64"
           },
           {
@@ -7480,6 +7498,12 @@
             "description": "Whether a page used the CSS property transition. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
             "mode": "NULLABLE",
             "name": "use_counter_css_page_css_transition",
+            "type": "INT64"
+          },
+          {
+            "description": "Whether a page used the CSS property transition-behavior. Compare against `use.counter.top_level_content_documents_destroyed` to calculate the rate.\n",
+            "mode": "NULLABLE",
+            "name": "use_counter_css_page_css_transition_behavior",
             "type": "INT64"
           },
           {

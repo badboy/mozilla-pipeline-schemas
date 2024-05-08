@@ -144,6 +144,10 @@
                     "description": "The state of the signature of the add-on. This field is only available after the 'sessionstore-windows-restored' topic is notified.",
                     "type": "integer"
                   },
+                  "signedTypes": {
+                    "description": "A JSON-stringified array of signature types found for the add-on.",
+                    "type": "string"
+                  },
                   "type": {
                     "type": "string"
                   },
@@ -1279,11 +1283,17 @@
               "properties": {
                 "distro": {
                   "description": "The name of the Linux distribution. This is Linux only. `null` on failure.",
-                  "type": "string"
+                  "type": [
+                    "string",
+                    "null"
+                  ]
                 },
                 "distroVersion": {
                   "description": "The version of the Linux distribution. This is Linux only. `null` on failure.",
-                  "type": "string"
+                  "type": [
+                    "string",
+                    "null"
+                  ]
                 },
                 "hasPrefetch": {
                   "description": "Whether or not the OS-based prefetch application start-up optimization is set. This is Windows-only. `null` on failure.",
